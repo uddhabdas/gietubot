@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gietu Chatbot</title>
+    
+    <!-- Favicon (GIET University Logo) -->
+    <link rel="icon" href="https://www.giet.edu/wp-content/uploads/2020/04/University-Logo-e1605963067454.png" type="image/png">
+
+    <!-- Open Graph Meta Tags for Better Sharing -->
+    <meta property="og:title" content="GIETU Chatbot">
+    <meta property="og:image" content="https://www.giet.edu/wp-content/uploads/2020/04/University-Logo-e1605963067454.png">
+    <meta property="og:description" content="Chat with the GIETU Bot for instant help and support.">
+</head>
+
+<body>
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <!-- Chatbox Header with GIETU Logo -->
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://www.giet.edu/wp-content/uploads/2020/04/University-Logo-e1605963067454.png" alt="GIETU Logo" width="48">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">GIETU BOT</h4>
+                    <p class="chatbox__description--header">Hi. I am from GIET UNIVERSITY.   How can I assist you today?</p>
+                </div>
+            </div>
+
+            <!-- Chatbox Messages Section -->
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+
+            <!-- Chatbox Footer with Input and Send Button -->
+            <div class="chatbox__footer">
+                <input type="text" id="user-input" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button" id="send-btn">Send</button>
+            </div>
+        </div>
+
+        <!-- Chatbox Toggle Button -->
+        <div class="chatbox__button">
+            <button><img src="{{ url_for('static', filename='images/chatbox-icon.svg') }}" alt="Chat Icon"></button>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Section -->
+<script>
+    $SCRIPT_ROOT = {{ request.script_root|tojson }};
+
+    // JavaScript to handle the 'Enter' key for sending messages
+    document.getElementById('user-input').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            document.getElementById('send-btn').click();
+        }
+    });
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
